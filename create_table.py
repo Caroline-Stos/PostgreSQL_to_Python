@@ -3,13 +3,12 @@
 import psycopg2
 from config import config
 
-
 def create_tables():
-    """ create tables in the PostgreSQL database"""
+    """ criando uma tabela no PostgreSQL database"""
     commands = (
         """
-        CREATE TABLE pacientes (
-            paciente_id SERIAL PRIMARY KEY,
+        CREATE TABLE funcionarios (
+            funcionarios_id SERIAL PRIMARY KEY,
             nome VARCHAR(50) UNIQUE NULL,
             telefone INT 
         )
@@ -18,18 +17,19 @@ def create_tables():
     
     conn = None
     try:
-        # read the connection parameters
+        # lendo os parametros de conexão
         params = config()
-        # connect to the PostgreSQL server
+        # conectando ao PostgreSQL server
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-        # create table one by one
+        # criando tabela uma por uma
         for command in commands:
             cur.execute(command)
-        # close communication with the PostgreSQL database server
+        # fechando a comunicação com o PostgreSQL database server
         cur.close()
-        # commit the changes
+        # commit das mudanças
         conn.commit()
+
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
     finally:

@@ -5,7 +5,7 @@ from config import config
 
 
 def insert_paciente(paciente_id):
-    """ insert a new vendor into the vendors table """
+    """ inserindo um novo paciente_id """
     sql = """INSERT INTO pacientes(paciente_id)
              VALUES(%s) RETURNING paciente_id;"""
     conn = None
@@ -20,7 +20,7 @@ def insert_paciente(paciente_id):
         # execute the INSERT statement
         cur.execute(sql, (paciente_id,))
         # get the generated id back
-        pac_id = cur.fetchone()[0]
+        paciente_id = cur.fetchone()[0]
         # commit the changes to the database
         conn.commit()
         # close communication with the database
@@ -31,17 +31,17 @@ def insert_paciente(paciente_id):
         if conn is not None:
             conn.close()
 
-    return pac_id
+    return paciente_id
 
 if __name__ == '__main__':
-    # insert one vendor
+    # insere um novo paciente_id
     insert_paciente("987654")
-    # insert multiple vendors
-    #insert_pacientes_list([
-        #('AKM Semiconductor Inc.',),
-        #('Asahi Glass Co Ltd.',),
-        #('Daikin Industries Ltd.',),
-        #('Dynacast International Inc.',),
-        #('Foster Electric Co. Ltd.',),
-        #('Murata Manufacturing Co. Ltd.',)
+    # insert multiplos pacientes_ids
+    #insert_paciente_list([
+        #('000000',),
+        #('000000',),
+        #('000000',),
+        #('000000',),
+        #('000000',),
+        #('000000',)
     #])

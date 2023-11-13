@@ -1,6 +1,5 @@
 #!/usr/bin/python
 import psycopg2
-
 from config import config
 
 def connect():
@@ -17,15 +16,13 @@ def connect():
         # create a cursor
         cur = conn.cursor()
         
-	# execute a statement
-        print('PostgreSQL database version:')
-        cur.execute('SELECT version()')
+        # criando tabela uma por uma
+        cur.execute()
 
-        # display the PostgreSQL database server version
-        db_version = cur.fetchone()
-        print(db_version)
+        # commit das mudanças
+        conn.commit()
        
-	# close the communication with the PostgreSQL
+	    # close the communication with the PostgreSQL
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
