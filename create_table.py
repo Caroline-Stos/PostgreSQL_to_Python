@@ -10,7 +10,7 @@ def create_tables():
         """
         CREATE TABLE pacientes (
             paciente_id SERIAL PRIMARY KEY,
-            nome VARCHAR(50) UNIQUE NOT NULL,
+            nome VARCHAR(50) UNIQUE NULL,
             telefone INT 
         )
         """,
