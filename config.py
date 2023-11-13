@@ -6,12 +6,12 @@ from configparser import ConfigParser
 #(o padrão é database.ini e postgresql)
 
 def config(filename='database.ini', section='postgresql'):
-    # create a parser - analisando .ini
+    # analisando .ini
     parser = ConfigParser()
-    # read config file
+    # read config file - lendo arquivo
     parser.read(filename)
 
-    # get section, default to postgresql - cria uma seção
+    # cria uma seção padrão no postgreSQL
     db = {}
     if parser.has_section(section):
         params = parser.items(section)

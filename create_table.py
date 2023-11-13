@@ -7,8 +7,8 @@ def create_tables():
     """ criando uma tabela no PostgreSQL database"""
     commands = (
         """
-        CREATE TABLE funcionarios (
-            funcionarios_id SERIAL PRIMARY KEY,
+        CREATE TABLE pacientes (
+            paciente_id SERIAL PRIMARY KEY,
             nome VARCHAR(50) UNIQUE NULL,
             telefone INT 
         )

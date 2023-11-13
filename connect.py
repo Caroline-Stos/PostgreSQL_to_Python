@@ -3,26 +3,26 @@ import psycopg2
 from config import config
 
 def connect():
-    """ Connect to the PostgreSQL database server """
+    """ conectando ao PostgreSQL database server """
     conn = None
     try:
-        # read connection parameters
+        # lendo os parametros de conexão
         params = config()
 
-        # connect to the PostgreSQL server
+        # conectando ao PostgreSQL server
         print('Connecting to the PostgreSQL database...')
         conn = psycopg2.connect(**params)
 		
-        # create a cursor
+        # criando um cursor
         cur = conn.cursor()
         
-        # criando tabela uma por uma
+        # executando comando sql
         cur.execute()
 
         # commit das mudanças
         conn.commit()
        
-	    # close the communication with the PostgreSQL
+	    # fechando a comunicação com o PostgreSQL
         cur.close()
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
